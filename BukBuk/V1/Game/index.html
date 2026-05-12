@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes"
+    />
+    <title>BUKBUK</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #unity-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      #unity-canvas {
+        width: 100%;
+        height: 100%;
+        background-image: url("Build/BukBuk.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas"></canvas>
+    </div>
+
+    <script src="Build/BukBuk.loader.js"></script>
+    <script>
+      var startTime = new Date().getTime();
+      var MyGameInstance = null;
+      var maxProgress = -1;
+      var canvas = document.querySelector("#unity-canvas");
+
+      initializeLoadingEvent();
+
+      var config = {
+        dataUrl: "Build/BukBuk.data",
+        frameworkUrl: "Build/BukBuk.framework.js",
+        codeUrl: "Build/BukBuk.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DigitalPen",
+        productName: "BUK",
+        productVersion: "1.4",
+      };
+
+      createUnityInstance(canvas, config, function (progress) {
+        if (progress > maxProgress) {
+          maxProgress = progress;
+          broadcastGameLoadingEvent(progress);
+        }
+      }).then(function (unityInstance) {
+        MyGameInstance = unityInstance;
+        calculateLoadTime(startTime);
+      });
+
+      function initializeLoadingEvent() {
+        addEventListener("onGameLoading", function (e) {
+          try {
+            if (
+              window.webkit &&
+              window.webkit.messageHandlers &&
+              window.webkit.messageHandlers.onGameLoading
+            ) {
+              window.webkit.messageHandlers.onGameLoading.postMessage(e.detail);
+            } else if (typeof BarraqAndroidBridge !== "undefined") {
+              BarraqAndroidBridge.onGameLoading(JSON.stringify(e.detail));
+            } else {
+              console.log("non-native environment:: onGameLoading");
+            }
+          } catch (err) {
+            console.warn("error while trying to run natively - ", err.message);
+          }
+        });
+      }
+
+      function broadcastGameLoadingEvent(progress) {
+        var event = new CustomEvent("onGameLoading", {
+          detail: {
+            message: "Game Load Percentage: " + progress,
+            data: {
+              load_progress: progress,
+            },
+          },
+        });
+        dispatchEvent(event);
+      }
+
+      function calculateLoadTime(bootTimestamp) {
+        var loadedTimestamp = new Date().getTime();
+        var difference = loadedTimestamp - bootTimestamp;
+        var minutes = parseInt(difference / 1000 / 60, 10);
+        var seconds = parseInt((difference / 1000) % 60, 10);
+        console.log(
+          "Game Loadtime = " +
+            difference +
+            " ms, equivalent to " +
+            minutes +
+            ":" +
+            seconds
+        );
+      }
+
+      function doInitiate(encodedData) {
+        if (MyGameInstance) {
+          MyGameInstance.SendMessage("JS", "DoInitiate", encodedData);
+        }
+      }
+
+      function doClose() {
+        if (MyGameInstance) {
+          MyGameInstance.SendMessage("JS", "DoQuit");
+        }
+      }
+
+      function doPause() {
+        if (MyGameInstance) {
+          MyGameInstance.SendMessage("JS", "DoPause");
+        }
+      }
+
+      function doResume() {
+        if (MyGameInstance) {
+          MyGameInstance.SendMessage("JS", "DoResume");
+        }
+      }
+
+      function doConnectionRetry() {
+        if (MyGameInstance) {
+          MyGameInstance.SendMessage("JS", "DoConnectionRetry");
+        }
+      }
+
+      function doConnectionLost() {
+        if (MyGameInstance) {
+          MyGameInstance.SendMessage("JS", "DoConnectionRetry");
+        }
+      }
+    </script>
+  </body>
+</html>
