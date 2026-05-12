@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 4133248933
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: playscene
+      Dependencies: {}
+    Info_1:
+      Name: menu
+      Dependencies: {}
