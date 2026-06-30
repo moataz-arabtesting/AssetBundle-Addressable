@@ -1,10 +1,10 @@
 ManifestFileVersion: 0
-CRC: 738224433
+CRC: 2229100307
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: playscene
+      Name: menu
       Dependencies: {}
     Info_1:
-      Name: menu
+      Name: playscene
       Dependencies: {}
