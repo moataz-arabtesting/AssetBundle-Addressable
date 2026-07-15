@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4189335153
+CRC: 2635870573
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: feb073800f985bbb2902c8e954441c36
+    Hash: 72ed4087829b92b4898038f66e03004b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4d6c54153685297b67712392f4215062
+    Hash: 178f0532827ee226af39bf8da6da2a34
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -46,11 +46,7 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a3fbe5dedd752c247825c1af5d119ea2, type: 3}
 - Class: 114
@@ -68,40 +64,12 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.FaceInfo_Legacy
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.FontAssetCreationSettings
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.KerningTable
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_Character
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_FontFeatureTable
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_FontWeightPair
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphValueRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.ArgumentCache
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentListenerMode
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.FaceInfo
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.Glyph
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.GlyphMetrics
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.GlyphRect
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.AnimationTriggers
 - AssemblyName: UnityEngine.UI
